@@ -1,0 +1,1336 @@
+/*
+Theme Name: Lucky
+Text Domain: lucky
+Version: 1.0.0
+Requires at least: 4.7
+Requires PHP: 5.2.4
+Description: Our WordPress theme (lucky) is designed to take full advantage of the flexibility of the block editor. Bloggers, Publishers, Writers, Marketers, Affiliates, Organizations and Businesses have the ability to create dynamic landing pages with endless layouts using the group and column blocks. The centered content column and fine-tuned typography also makes it perfect for traditional blogs. Complete editor styles give you a good idea of what your content will look like, even before you publish. You can give your site a personal touch by changing the background colors and the accent color in the Customizer. The colors of all elements on your site are automatically calculated based on the colors you pick, ensuring a high, accessible color contrast for your visitors.
+Tags: blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks, accessibility-ready, WpFairs, lucky, lucky.com, blogger, blog, theme, WordPress Theme Development, WordPress Plugin Development, WordPress Website Development, Organization, Business.
+Author: Kawsar Ahmed
+Author URI: https://urldev.com/kawsar-ahmed/
+Theme URI: https://urldev.com/themes/lucky/
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/*------------------------
+>>> TABLE OF CONTENTS:
+--------------------------
+01. lucky Custom Icons
+02. Mmenu Light CSS
+03. CSS Reset
+04. WordPress Core
+05. lucky Grid CSS
+06. Global CSS
+07. Header CSS
+08. Header Logo CSS
+09. Header Nav Menu CSS
+10. Mobile Menu
+11. Header Search Form CSS
+12. Blog Posts CSS
+13. Share Icons CSS
+14. Pagination CSS
+15. comments template CSS
+16. Widget CSS
+17. Footer CSS
+18. lucky Extra futures CSS
+19. Responsive CSS for lucky theme
+-----------------------------------------*/
+
+/* >> 01. lucky Custom Icons
+-----------------------------*/
+[class^="lucky-icon-"], [class*=" lucky-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'lucky-icon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: inherit;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.lucky-icon-bars:before {
+  content: "\f0c9";
+}
+.lucky-icon-phone:before {
+  content: "\e942";
+}
+.lucky-icon-envelop:before {
+  content: "\e945";
+}
+.lucky-icon-location:before {
+  content: "\e948";
+}
+.lucky-icon-calendar:before {
+  content: "\e953";
+}
+.lucky-icon-printer:before {
+  content: "\e954";
+}
+.lucky-icon-bubble:before {
+  content: "\e96e";
+}
+.lucky-icon-search:before {
+  content: "\e986";
+}
+.lucky-icon-download:before {
+  content: "\e9c7";
+}
+.lucky-icon-cross:before {
+  content: "\ea0f";
+}
+.lucky-icon-arrow-up-bold:before {
+  content: "\ea32";
+}
+.lucky-icon-arrow-up:before {
+  content: "\ea3a";
+}
+.lucky-icon-arrow-right:before {
+  content: "\ea3c";
+}
+.lucky-icon-arrow-down:before {
+  content: "\ea3e";
+}
+.lucky-icon-arrow-left:before {
+  content: "\ea40";
+}
+.lucky-icon-share:before {
+  content: "\ea82";
+}
+.lucky-icon-facebook:before {
+  content: "\ea90";
+}
+.lucky-icon-instagram:before {
+  content: "\ea92";
+}
+.lucky-icon-whatsapp:before {
+  content: "\ea93";
+}
+.lucky-icon-telegram:before {
+  content: "\ea95";
+}
+.lucky-icon-twitter:before {
+  content: "\ea96";
+}
+.lucky-icon-youtube:before {
+  content: "\ea9d";
+}
+.lucky-icon-tumblr:before {
+  content: "\eab9";
+}
+.lucky-icon-skype:before {
+  content: "\eac5";
+}
+.lucky-icon-reddit:before {
+  content: "\eac6";
+}
+.lucky-icon-linkedin:before {
+  content: "\eaca";
+}
+.lucky-icon-pinterest:before {
+  content: "\ead2";
+}
+/* >> 02. Mmenu Light CSS
+-------------------------*/
+ :root {
+  --mm-ocd-width: 75%;
+  --mm-ocd-min-width: 200px;
+  --mm-ocd-max-width: 440px;
+  --mm-spn-item-height: 50px;
+  --mm-spn-item-indent: 20px;
+  --mm-spn-line-height: 24px;
+}
+body.mm-ocd-opened {
+  overflow-y: hidden;
+  -ms-scroll-chaining: none;
+  overscroll-behavior: none;
+}
+.mm-ocd {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
+  -ms-scroll-chaining: none;
+  overscroll-behavior: contain;
+  background: rgba(0, 0, 0, 0);
+  -webkit-transition-property: bottom, background-color;
+  -o-transition-property: bottom, background-color;
+  transition-property: bottom, background-color;
+  -webkit-transition-duration: 0s, 0.3s;
+  -o-transition-duration: 0s, 0.3s;
+  transition-duration: 0s, 0.3s;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-delay: 0.45s, 0.15s;
+  -o-transition-delay: 0.45s, 0.15s;
+  transition-delay: 0.45s, 0.15s;
+}
+.mm-ocd--open {
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.25);
+  -webkit-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.mm-ocd__content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 80%;
+  width: var(--mm-ocd-width);
+  min-width: 200px;
+  min-width: var(--mm-ocd-min-width);
+  max-width: 440px;
+  max-width: var(--mm-ocd-max-width);
+  background: #fff;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  -o-transition-property: transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+}
+.mm-ocd--left .mm-ocd__content {
+  left: 0;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+.mm-ocd--right .mm-ocd__content {
+  right: 0;
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+.mm-ocd--open .mm-ocd__content {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.mm-ocd__backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  width: calc(100% - 80%);
+  width: calc(100% - var(--mm-ocd-width));
+  min-width: calc(100% - 440px);
+  min-width: calc(100% - var(--mm-ocd-max-width));
+  max-width: calc(100% - 200px);
+  max-width: calc(100% - var(--mm-ocd-min-width));
+  background: rgba(3, 2, 1, 0);
+}
+.mm-ocd--left .mm-ocd__backdrop {
+  right: 0;
+}
+.mm-ocd--right .mm-ocd__backdrop {
+  left: 0;
+}
+.mm-spn,
+.mm-spn a,
+.mm-spn li,
+.mm-spn span,
+.mm-spn ul {
+  display: block;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.mm-spn {
+  width: 100%;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  -webkit-clip-path: inset(0 0 0 0);
+  clip-path: inset(0 0 0 0);
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+.mm-spn ul {
+  -webkit-overflow-scrolling: touch;
+  position: fixed;
+  top: 0;
+  left: 100%;
+  bottom: 0;
+  z-index: 2;
+  width: 130%;
+  padding-right: 30%;
+  line-height: 24px;
+  line-height: var(--mm-spn-line-height);
+  overflow: visible;
+  overflow-y: auto;
+  background: inherit;
+  -webkit-transition: left 0.3s ease 0s;
+  -o-transition: left 0.3s ease 0s;
+  transition: left 0.3s ease 0s;
+  cursor: default;
+}
+.mm-spn ul:after {
+  content: "";
+  display: block;
+  height: 50px;
+  height: var(--mm-spn-item-height);
+}
+.mm-spn > ul {
+  left: 0;
+}
+.mm-spn ul.mm-spn--open {
+  left: 0;
+}
+.mm-spn ul.mm-spn--parent {
+  left: -30%;
+  overflow-y: hidden;
+}
+.mm-spn li {
+  position: relative;
+  background: inherit;
+  cursor: pointer;
+}
+.mm-spn li:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 25px;
+  top: calc(var(--mm-spn-item-height) / 2);
+  right: 25px;
+  right: calc(var(--mm-spn-item-height) / 2);
+  z-index: 0;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  -webkit-transform: rotate(45deg) translate(0, -50%);
+  -ms-transform: rotate(45deg) translate(0, -50%);
+  transform: rotate(45deg) translate(0, -50%);
+  opacity: 0.4;
+}
+.mm-spn li:after {
+  content: "";
+  display: block;
+  margin-left: 20px;
+  margin-left: var(--mm-spn-item-indent);
+  border-top: 1px solid;
+  opacity: 0.15;
+}
+.mm-spn a,
+.mm-spn span {
+  position: relative;
+  z-index: 1;
+  padding: 13px 20px;
+  padding: calc((var(--mm-spn-item-height) - var(--mm-spn-line-height)) / 2) var(--mm-spn-item-indent);
+}
+.mm-spn a {
+  background: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+.mm-spn a:not(:last-child) {
+  width: calc(100% - 50px);
+  width: calc(100% - var(--mm-spn-item-height));
+}
+.mm-spn a:not(:last-child):after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-right: 1px solid;
+  opacity: 0.15;
+}
+.mm-spn span {
+  background: 0 0;
+}
+.mm-spn.mm-spn--navbar {
+  cursor: pointer;
+}
+.mm-spn.mm-spn--navbar:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 25px;
+  top: calc(var(--mm-spn-item-height) / 2);
+  left: 20px;
+  left: var(--mm-spn-item-indent);
+  width: 10px;
+  height: 10px;
+  margin-top: 2px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  -webkit-transform: rotate(-45deg) translate(50%, -50%);
+  -ms-transform: rotate(-45deg) translate(50%, -50%);
+  transform: rotate(-45deg) translate(50%, -50%);
+  opacity: 0.4;
+}
+.mm-spn.mm-spn--navbar.mm-spn--main {
+  cursor: default;
+}
+.mm-spn.mm-spn--navbar.mm-spn--main:before {
+  content: none;
+  display: none;
+}
+.mm-spn.mm-spn--navbar:after {
+  content: attr(data-mm-spn-title);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  height: var(--mm-spn-item-height);
+  padding: 0 40px;
+  padding: 0 calc(var(--mm-spn-item-indent) * 2);
+  line-height: 50px;
+  line-height: var(--mm-spn-item-height);
+  opacity: 0.4;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.mm-spn.mm-spn--navbar.mm-spn--main:after {
+  padding-left: 20px;
+  padding-left: var(--mm-spn-item-indent);
+}
+.mm-spn.mm-spn--navbar ul {
+  top: 51px;
+  top: calc(var(--mm-spn-item-height) + 1px);
+}
+.mm-spn.mm-spn--navbar ul:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: inherit;
+  z-index: 2;
+  width: 100%;
+  border-top: 1px solid currentColor;
+  opacity: 0.15;
+}
+.mm-spn.mm-spn--light {
+  background: #f3f3f3;
+}
+.mm-spn.mm-spn--light .menu{
+  background-color: #f3f3f3;
+}
+/* .mm-spn.mm-spn--dark {
+  color: #ddd;
+  background: #333;
+} */
+.mm-spn.mm-spn--vertical {
+  overflow-y: auto;
+}
+.mm-spn.mm-spn--vertical ul {
+  width: 100%;
+  padding-right: 0;
+  position: static;
+}
+.mm-spn.mm-spn--vertical ul ul {
+  display: none;
+  padding-left: 20px;
+  padding-left: var(--mm-spn-item-indent);
+}
+.mm-spn.mm-spn--vertical ul ul:after {
+  height: 25px;
+  height: calc(var(--mm-spn-item-height) / 2);
+}
+.mm-spn.mm-spn--vertical ul.mm-spn--open {
+  display: block;
+}
+.mm-spn.mm-spn--vertical li.mm-spn--open:before {
+  -webkit-transform: rotate(135deg) translate(-50%, 0);
+  -ms-transform: rotate(135deg) translate(-50%, 0);
+  transform: rotate(135deg) translate(-50%, 0);
+}
+.mm-spn.mm-spn--vertical ul ul li:last-child:after {
+  content: none;
+  display: none;
+}
+/* >> 03. CSS Reset
+-------------------*/
+*{
+  box-sizing: border-box;
+}
+html,
+body {
+	border: none;
+	margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, sans-serif;
+}
+h1,h2,h3,h4,h5,h6,
+p,
+blockquote,
+address,
+big,
+cite,
+code,
+em,
+font,
+img,
+small,
+strike,
+sub,
+sup,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tr,
+th,
+td {
+	border: none;
+	font-size: inherit;
+	line-height: inherit;
+	margin: 0;
+	padding: 0;
+	text-align: inherit;
+}
+blockquote::before,
+blockquote::after {
+	content: "";
+}
+/* >> 04. WordPress Core
+------------------------*/
+.alignnone {
+  margin: 5px 20px 20px 0;
+}
+.aligncenter,
+div.aligncenter {
+  display: block;
+  margin: 5px auto 5px auto;
+}
+.alignright {
+  float:right;
+  margin: 5px 0 20px 20px;
+}
+.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+a img.alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+a img.alignnone {
+  margin: 5px 20px 20px 0;
+}
+a img.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wp-caption {
+  max-width: 96%; /* Image does not overflow the content area */
+  padding: 5px 3px 10px;
+  text-align: center;
+}
+.wp-caption.alignnone {
+  margin: 5px 20px 20px 0;
+}
+.wp-caption.alignleft {
+  margin: 5px 20px 20px 0;
+}
+.wp-caption.alignright {
+  margin: 5px 0 20px 20px;
+}
+.wp-caption img {
+  border: 0 none;
+  height: auto;
+  margin: 0;
+  max-width: 98.5%;
+  padding: 0;
+  width: auto;
+}
+.wp-caption p.wp-caption-text {
+  font-size: 11px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0 4px 5px;
+}
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+.screen-reader-text:focus {
+	background-color: #eee;
+	clip: auto !important;
+	clip-path: none;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+/* wordpress deafult fixed css */
+figure.wp-block-image{
+  margin: 0;
+}
+figure.wp-block-image img{
+  height: auto;
+}
+/* >> 05. lucky Grid CSS
+-------------------------*/
+.col-1{
+  width: 8.333333%;
+}
+.col-2{
+  width: 16.666666%;
+}
+.col-3{
+  width: 25%;
+}
+.col-4{
+  width: 33.333333%;
+}
+.col-5{
+  width: 41.666666%;
+}
+.col-6{
+  width: 50%;
+}
+.col-7{
+  width: 58.333333%;
+}
+.col-8{
+  width: 66.666666%;
+}
+.col-9{
+  width: 75%;
+}
+.col-10{
+  width: 83.333333%;
+}
+.col-11{
+  width: 91.666666%;
+}
+.col-12{
+  width: 100%;
+}
+[class*="col-"] {
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.flex-center{
+  display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+}
+.clearfix::after{
+  content: "";
+  clear: both;
+  display: block;
+}
+/* >> 06. Global CSS
+--------------------*/
+h1, h2, h3, h4, h5, h6{
+  margin-bottom: .5rem;
+  font-family: inherit;
+  line-height: 1.2;
+  color: inherit;
+}
+h1{
+  font-size: 2.5rem;
+}h2{
+  font-size: 2rem;
+}h3{
+  font-size: 1.75rem;
+}h4{
+  font-size: 1.5rem;
+}h5{
+  font-size: 1.25rem;
+}h6{
+  font-size: 1rem;
+}
+p{
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+a{
+  text-decoration: none;
+  color: var(--lucky-link-color);
+}a:hover, a:visited, a:focus{
+  color: var(--lucky-link-hover-color);
+}
+ul,li{
+  list-style-position: inside;
+}
+.facebook{
+  background-color: #516eab;
+}.twitter{
+  background-color: #29c5f6;
+}.linkedin{
+  background-color: #0266a0;
+}.pinterest{
+  background-color: #ca212a;
+}.reddit{
+  background-color: #f54200;
+}.tumblr{
+  background-color: #3e5a70;
+}.telegram{
+  background-color: #179cde;
+}.email{
+  background-color: #D44638;
+}.print{
+  background-color: #000000;
+}
+.content-wrap{
+  margin: 0px auto;
+}
+/* >> 07. Header CSS
+--------------------*/
+.header{
+  background: var(--lucky-color);
+  transition: top 0.3s ease-in-out;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.nav-up{
+  top: -80px;
+}
+.nav-down{
+  top: 0;
+}
+/* >> 08. Header Logo CSS
+-------------------------*/
+.header .logo{
+  padding-top: 5px;
+  padding-bottom: 5px;
+	display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+.logo img{
+	width:100%;
+	height:auto;
+	left:auto;
+	right:auto;
+	top:auto;
+}
+.logo .text-logo{
+  color: var(--lucky-site-title-color);
+  margin-bottom: 0;
+  font-size: 32px;
+}
+.logo .lucky-site-description{
+  width: 100%;
+  color: var(--lucky-site-title-color);
+}
+/* >> 09. Header Nav Menu CSS
+-----------------------------*/
+.header .header-menu{
+	position: relative;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+.header .nav{
+  background-color:var(--lucky-nav-bg-color);
+  margin-right: 50px;
+  width: 100%;
+}
+.header ul{
+  float: right;
+}
+.header ul li {
+	position: relative;
+	display: inline-block;
+}
+.header ul li a {
+	position: relative;
+	font-weight: bold;
+	text-transform: capitalize;
+	font-size: 14px;
+	padding: 15px 6px;
+	margin-right: 6px;
+	display: block;
+}
+.header ul li a:last-child{
+  margin-right: 0;
+}
+.header ul li ul {
+	position: absolute;
+	width: 175px;
+	top: 100%;
+	opacity: 0;
+	z-index: 999;
+	background: var(--lucky-nav-bg-color);
+	padding: 5px 0;
+	visibility: hidden;
+	border-top: 3px solid var(--lucky-link-hover-color);
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	-webkit-box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.4);
+	box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.4);
+}
+.header ul li:hover ul{
+	opacity: 1;
+	visibility: visible;
+}
+.header ul li ul li {
+	width: 100%;
+}
+.header ul li ul li a {
+	border-bottom: 1px dashed var(--lucky-link-hover-color);
+	padding: 5px 10px;
+	margin: 0px auto;
+}
+.header ul li ul li ul,
+.header ul li ul li ul li ul{
+	left: 110%;
+	top: 0;
+	opacity: 0 !important;
+	visibility: hidden !important;
+	-webkit-box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.40);
+	-moz-box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.40);
+	box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.40);
+}
+.header ul li ul li:hover ul,
+.header ul li ul li ul li:hover ul{
+  left: 100%;
+  opacity: 1 !important;
+	visibility: visible !important;
+}
+.header a{
+	color: var(--lucky-nav-text-color);
+}
+.header ul li.menu-item-has-children > a::after{
+  content: "\ea3e";
+  font-family: 'lucky-icon';
+  padding-left: 2px;
+}
+.header ul .sub-menu li.menu-item-has-children > a::after{
+  content: "\ea3c";
+  float: right;
+}
+/* >> Header Style 1 CSS */
+.header.header-style1 {
+  padding-bottom: 30px;
+}
+.header.header-style1.nav-up{
+  top: -110px;
+}
+.header-style1 .header-style1-menu {
+  position: absolute;
+  bottom: -25px;
+}
+.header-style1 .header-style1-menu .nav {
+  box-shadow: 0 5px 10px -5px #ccc;
+  padding: 0 50px 0 10px;
+  margin-right: 0;
+}
+.header-style1 .header-style1-menu .nav ul{
+  float: none;
+}
+.header-top-right .header-styele1-top-menu a{
+  color:var(--lucky-site-title-color);
+}
+.header a:hover, .header ul ul li a:hover, .header li.active a, .header ul .current-menu-item a,
+.header ul .current_page_item a, .header-style1 .header-style1-menu .sub-menu a:hover{
+	color: var(--lucky-nav-text-hover-color);
+}
+.header-top-right .header-styele1-top-menu {
+  float: right;
+  width: 100%;
+}
+/* >> 10. Mobile Menu
+---------------------*/
+body.mm-ocd-opened .nav-toggle .mobile-menu-icon:before{
+	content: "\ea0f";
+}
+/* >> 11. Header Search Form CSS
+--------------------------------*/
+.search .header-search-icon{
+	position: absolute;
+	right: 30px;
+  top: 13px;
+  opacity: 1;
+}
+.search .lucky-icon-search {
+	display: block;
+	font-size: 20px;
+	text-align: center;
+  color: var(--lucky-nav-text-color);
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.search .lucky-icon-search:hover{
+    cursor: pointer;
+}
+.search .header-search-icon.active:before{
+	content: "\ea0f";
+}
+.header .search .search-form{
+	position: absolute;
+	width: 350px;
+	padding:5px;
+	background-color: var(--lucky-color);
+	right: 15px;
+	top: 110%;
+	z-index: 99;
+  border-radius:5px;
+  opacity: 0;
+  visibility: hidden;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.header .search .active{
+	opacity: 1;
+	visibility: visible;
+}
+.search input[type="search"]{
+	padding: 6px;
+	border: 1px solid var(--lucky-color);
+	margin-right: -6px;
+  width: 88%;
+  outline:none;
+}
+.search button[type="submit"]{
+	background-color: var(--lucky-color);
+  width: 12%;
+  outline:none;
+}
+button[type="submit"]:hover, .header .search .search-icon li a:hover, .search-form .search-submit:hover{
+	cursor:pointer;
+}
+.error404 .search .lucky-icon-search{
+  padding-bottom: 9px!important;
+}
+/* WordPress default search form */
+.search-form .search-field{
+	border: 1px solid var(--lucky-color);
+  padding: 6px;
+  width: 68%!important;
+  outline: none;
+}
+.search-form .search-submit{
+	border: 1px solid var(--lucky-color);
+  padding: 6px 0;
+  width: 28%;
+	background-color: var(--lucky-color);
+  color: var(--lucky-site-title-color);
+  outline: none;
+}
+/* >> 12. Blog Posts CSS
+------------------------*/
+.lucky-main{
+  padding: 30px 0px;
+}
+.blog .lucky-main-content, .archive .lucky-main-content, .search .lucky-main-content{
+  display: flex;
+  flex-wrap: wrap;
+}
+.blog .lucky-post p, .archive .lucky-post p, .search .lucky-post p{
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+.lucky-main-content .lucky-post{
+  width: 49%;
+}
+.lucky-main-content .lucky-post:nth-child(odd){
+  margin-left: 2%;
+}
+.lucky-main-content .lucky-post:first-child{
+  width: 100%;
+  margin-left: 0;
+}
+.lucky-post .entry-title{
+  font-size: 1.25rem;
+  padding: 15px 0;
+}
+.lucky-post:first-child .entry-title{
+  font-size: 1.75rem;
+}
+.entry-header .featured-img img{
+  width: 100%;
+  height: auto;
+}
+.entry-meta{
+  margin-bottom: 15px;
+}
+.lucky-post, .lucky-singular, .comments-area, .lucky-prev-next-post, .lucky-related-posts{
+  background-color: var(--lucky-article-bg-color);
+  margin-bottom: 30px;
+}
+/* >> 13. Share Icons CSS
+-------------------------*/
+.entry-share, .comment-navigation{
+  margin: 15px 0;
+  padding: 10px 0;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+.entry-share > span,
+.entry-share a{
+  display: inline-block;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.entry-share a{
+  color: var(--lucky-site-title-color);
+  padding: 5px;
+}
+.entry-share a:hover{
+  opacity: 0.8;
+}
+.entry-share .share-text{
+  padding-left: 3px;
+}
+/** >> Previous, Next Post Link &  Related Posts
+------------------------------------------------*/
+.lucky-prev-next-post .prev-post.col-6,
+.lucky-related-posts .related-posts.col-4:nth-child(2){
+  padding-left: 0;
+}
+.lucky-prev-next-post .next-post.col-6,
+.lucky-related-posts .related-posts:last-child{
+  padding-right: 0;
+}
+.lucky-related-posts img{
+  width: 100%;
+  height: auto;
+}
+/* >> 14. Pagination CSS
+------------------------*/
+.lucky-pagination-box{
+  text-align: center;
+  width: 100%;
+  margin: 15px 0;
+}
+.lucky-pagination-box .pagination a{
+  opacity:0.6;
+}
+.lucky-pagination-box .pagination a,
+.lucky-pagination-box .pagination .current{
+	padding:5px 15px;
+	font-weight:bold;
+	border-radius:5px;
+	color:var(--lucky-site-title-color);
+	background-color:var(--lucky-color);
+}
+.lucky-pagination-box .pagination a:hover{
+	opacity:1;
+}
+.lucky-pagination-box .pagination .dots{
+	font-weight:bold;
+	font-size:20px;
+	margin: 0px 2px;
+	color:var(--lucky-color);
+	opacity:0.5;
+}
+/* >> 15. comments template CSS
+-------------------------------*/
+.comment-content{
+  padding-top: 15px;
+}
+.comment-list .reply{
+  padding: 5px 0;
+}
+.comment-list .reply a{
+  padding:5px 15px;
+	border-radius:10px;
+	border:1px solid var(--lucky-color)
+}
+.comment-list li{
+	padding:15px 0px;
+}
+.comment-list li .children{
+  margin-left:30px;
+  border-left:1px solid var(--lucky-color)
+}
+.comment-list li .children li{
+	padding-left:30px;
+}
+/* comments navigation */
+.comment-navigation .col-6{
+  padding: 0;
+}
+.comment-navigation a{
+  background-color: var(--lucky-color);
+  padding: 10px 15px;
+  color: var(--lucky-site-title-color);
+}
+.older-comments a{
+  float: left;
+}
+.older-comments a::before{
+  content: "\ea40";
+  font-family: 'lucky-icon';
+  padding-right: 5px;
+}
+.newer-comments a{
+  float: right;
+}
+.newer-comments a:after{
+  content: "\ea3c";
+  font-family: 'lucky-icon';
+  padding-left: 5px;
+}
+.comment-respond .comment-reply-title{
+	text-align:center;
+}
+.comment-respond .required{
+  color: #ff0000;
+}
+.comment-respond .form-group{
+  margin: 15px 0;
+}
+.comment-respond .form-group .form-control{
+  width: 100%;
+  padding: 10px;
+  outline-color: var(--lucky-color);
+}
+.form-submit .lucky-submit{
+  padding: 10px 15px;
+  margin-top: 15px;
+	background-color:var(--lucky-color);
+  color:var(--lucky-site-title-color);
+  border: none;
+  outline: none;
+}
+/* >> 16. Widget CSS
+--------------------*/
+.lucky-main-widget .lucky-widget{
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+.lucky-widget li{
+  list-style: none;
+  padding: 5px 0px;
+}
+/* >> 17. Footer CSS
+--------------------*/
+.footer{
+  background-image: linear-gradient(var(--lucky-color), #00adff);
+}
+.footer, .footer a, footer p, .footer h3{
+  color: var(--lucky-site-title-color);
+}
+.footer a:hover{
+  color: var(--lucky-link-hover-color);
+}
+.footer-top-widget, .footer-widget{
+  padding: 50px 0px;
+  border-bottom: 1px solid #0079B3;
+}
+.footer-widget .col-4:nth-child(1), .footer-widget .col-4:nth-child(3){
+  width: 25%;
+}
+.footer-widget .col-4:nth-child(2){
+  width: 50%;
+}
+.footer-bottom{
+  padding: 15px 0px;
+}
+.footer .menu ul{
+  float: right;
+}
+.footer .menu ul li {
+	position: relative;
+  display: inline-block;
+}
+.footer .menu ul li a{
+  padding: 5px 8px;
+}
+/* >> 18. lucky Extra futures CSS (like: goto top btn)
+----------------------------------------------------*/
+#gototop{
+  position:fixed;
+  bottom:15px;
+	right:-100px;
+  z-index:9999;
+	border:1px solid var(--lucky-site-title-color);
+  outline:none;
+	background-color:var(--lucky-color);
+	opacity: 0.8;
+  color:var(--lucky-site-title-color);;
+  cursor:pointer;
+	padding:5px 10px;
+	height: 40px;
+	width: 40px;
+  border-radius:10px;
+  font-size: 20px;
+  transition: .3s;
+}
+#gototop.active{
+  right: 10px;
+}
+#gototop:hover{
+	opacity:1;
+}
+/* Yoast SEO Breadcrumbs CSS */
+#breadcrumbs{
+	margin-top: 30px;
+	margin-bottom: 0
+}
+.elementor-page .urldev-breadcrumbs{
+	display: none
+}
+.ad-box{
+  width: 100%;
+  height: auto;
+  background: red;
+}
+/* >> 19. Responsive CSS for lucky theme
+-----------------------------------------*/
+@media (max-width: 767px){
+  /* 02. lucky Grid CSS For Small Device */
+  /* .col-sm-1{
+    width: 8.33%;
+  }
+  .col-sm-2{
+    width: 16.66%;
+  }
+  .col-sm-3{
+    width: 25%;
+  } */
+  .col-sm-4{
+    width: 33.333333%;
+  }
+  /* .col-sm-5{
+    width: 41.66%;
+  } */
+  .col-sm-6{
+    width: 50%;
+  }
+  /* .col-sm-7{
+    width: 58.33%;
+  } */
+  .col-sm-8{
+    width: 66.666666%;
+  }
+  /* .col-sm-9{
+    width: 75%;
+  }
+  .col-sm-10{
+    width: 83.33%;
+  }
+  .col-sm-11{
+    width: 91.66%;
+  } */
+  .col-sm-12{
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .content-wrap{
+    width: 100%;
+  }
+  .header.header-style1{
+    padding-bottom: 0;
+  }
+  .header-style1 .search .header-search-icon {
+    right: 15px;
+    color: var(--lucky-site-title-color);
+  }
+  .header .nav-toggle{
+    position: absolute;
+    right: 60px;
+    top: 13px;
+    font-size: 20px;
+    color:var(--lucky-site-title-color);
+  }
+  .lucky-main {
+    padding: 0px;
+    display: flex;
+    flex-flow: column;
+  }
+  .lucky-main-content{
+    order: 1;
+  }
+  .lucky-main-widget{
+    order: 2;
+  }
+  .lucky-post:first-child .entry-title{
+    font-size: 1.5rem;
+  }
+  .footer-widget .col-4:nth-child(1),
+  .footer-widget .col-4:nth-child(2),
+  .footer-widget .col-4:nth-child(3){
+    width: 100%;
+    text-align: center;
+  }
+  .footer-bottom-copyright{
+    text-align: center;
+  }
+  .footer .footer-bottom-menu ul {
+    float: none;
+    text-align: center;
+  }
+}
+@media (max-width: 576px){
+  .col-xs-12{
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .header .nav-toggle{
+    right: 50px;
+  }
+  .lucky-main-content .lucky-post{
+    width: 100%;
+  }
+  .lucky-main-content .lucky-post:nth-child(odd){
+    margin-left: 0;
+  }
+  .footer-top-widget .lucky-widget{
+    text-align: center;
+  }
+  .wp-calendar-table{
+    width: 100%;
+  }
+}
+@media (max-width: 375px){
+	.header .search .search-form{
+		width: 250px;
+	}
+}
+/*
+ * The End ! Theme created by https://urldev.com
+ */
